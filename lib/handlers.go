@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-//requests for actual URL
+//BringMeLonger is requests for actual URL
 func BringMeLonger(c *gin.Context) {
 	ctx, cancel := context.WithTimeout(c.Request.Context(), TIMEOUT)
 	defer cancel()
@@ -23,7 +23,7 @@ func BringMeLonger(c *gin.Context) {
 	c.Redirect(http.StatusMovedPermanently, resp.Url)
 }
 
-// handler function for shortening URLs
+//MakeThisShorter is handler function for shortening URLs
 func MakeThisShorter(c *gin.Context) {
 	ctx, cancel := context.WithTimeout(c.Request.Context(), TIMEOUT)
 	defer cancel()
@@ -45,6 +45,8 @@ func MakeThisShorter(c *gin.Context) {
 			return
 		}
 		req.validFor = durP
+	} else {
+		req.validFor, _ = time.ParseDuration("8760h")
 	}
 	//check if custom URL was requested
 	if req.custom != "" {
@@ -76,7 +78,6 @@ func MakeThisShorter(c *gin.Context) {
 		return
 	}
 
-	//todo silinecek
 	c.JSON(http.StatusOK, gin.H{
 		"inserted URL":      resp.Url,
 		"created short URL": resp.ShortURL,

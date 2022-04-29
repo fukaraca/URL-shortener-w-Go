@@ -2,7 +2,7 @@ version: "3.8"
 services:
   mongodb:
     image: mongo
-    container_name: mongodb1
+    container_name: mongodb-URL-Shortener
     ports:
       - 27017:27017
     volumes:
@@ -12,7 +12,7 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=rootpass
   mongo-express:
     image: mongo-express
-    container_name: mongo-express1
+    container_name: mongo-express-URL-Shortener
     restart: always
     ports:
       - 8081:8081
@@ -21,7 +21,7 @@ services:
       - ME_CONFIG_MONGODB_ADMINPASSWORD=rootpass
       - ME_CONFIG_MONGODB_SERVER=mongodb
 volumes:
-  data: {}
+  data:
 
 networks:
   default:
