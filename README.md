@@ -1,6 +1,6 @@
 # URL Squeezer
 
-A basic URL shortener written with Go. MongoDB has been used for database requirements.
+A basic URL shortener written with Go. MongoDB has been used for database requirements. Youtube presentation can be foun [here](https://youtu.be/8fzwr5jl7uw)
 
 ```
 git clone https://github.com/fukaraca/URL-shortener-w-Go.git
